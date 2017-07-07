@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/sb-admin-2.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/estilos.css">
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="#">
     <!-- CSS del plugin -->
     <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
     
@@ -90,24 +90,33 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        
                                 @if (Auth::guest())
-                                    <li><a href="/validacion/inicio">Iniciar Sesión</a></li>
-                                    <li><a href="/validacion/registro">Registrarse</a></li>
-                                @else
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a> </li>
-                                            <li><a href="/validacion/salida">Salir</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="/validacion/salida"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
-                                            </li>
-                       
-                                        </ul>
-                                    </li>
+                                        <li><a href="{{ url('/login') }}">Iniciar Sesión</a></li>
+                                        <li><a href="{{ url('/register') }}">Registrarse</a></li>
+                                    @else
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                {{ Auth::user()->name }} <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a> </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="{{ url('/logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                        Salir
+                                                    </a>
+
+                                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                                        {{ csrf_field() }}
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    @endif
                                 
-                                @endif
 
                         </ul>
                     </li>
@@ -128,7 +137,7 @@
                         </li>
 
                         <li>
-                            <a href="impresora"><i class="fa fa-print fa-fw"></i>Productos</a>
+                            <a href="/productos"><i class="fa fa-print fa-fw"></i>Productos</a>
                         </li>
 
                         <li>

@@ -32,7 +32,7 @@ class ProductoController extends Controller
 
         // se obtenendran los valores de cada producto y se almacenaran en un array para ser retornados hacia la vista
         foreach ($productos as $producto) {
-            $area = Area::find($producto->area_id);
+            $departamento = Departamento::find($producto->area_id);
             
         
             $datos[$contador]["id"] = $producto->producto_id;
@@ -40,7 +40,7 @@ class ProductoController extends Controller
             $datos[$contador]["descripcion"] = $producto->descripcion;
             $datos[$contador]["cantidad"]= $producto->cantidad;
             $datos[$contador]["stock_min"] = $producto->stock_min;
-            $datos[$contador]["area"] = $area->nombre;
+            $datos[$contador]["departamento"] = $departamento->descripcion;
         
 
             $contador++;
@@ -56,11 +56,11 @@ class ProductoController extends Controller
      */
     public function create()
     {   
-        $areas = area::all();
+        $departamentos = Departamento::all();
        
         
    
-        return view("/crearLibro",compact('areas'));
+        return view("/crearLibro",compact('departamentos'));
     }
 
     /**
@@ -108,7 +108,7 @@ class ProductoController extends Controller
      
 
         // se retorna la vista  y los datos
-        return view('editLibro', compact('titulo','anno','autor','genero'));
+        return view('editProducto', compact('nombre','descripcion','cantidad','stock_min','departamento_id'));
     }
 
     /**

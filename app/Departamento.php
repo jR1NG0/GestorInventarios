@@ -4,7 +4,7 @@ namespace GestorInventarios;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class Departamento extends Model
 {
     
     /**
@@ -12,9 +12,9 @@ class Producto extends Model
     *
     * @var string 
     **/
-    protected $table = 'productos';
+    protected $table = 'departamentos';
 
-     protected $primaryKey = 'producto_id';
+    protected $primaryKey = 'departamento_id';
 
     public $timestamps = false;
     /**
@@ -23,8 +23,9 @@ class Producto extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre', 'descripcion', 'cantidad','stock_min','area_id',
+        'descripcion', 
     ];
 
     
+
 }

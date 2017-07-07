@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('bienvenida');
 });
+
+Route::resource('/inicio', 'InicioController');
+Route::resource('/productos', 'ProductoController');
+Route::resource('/departamentos', 'DepartamentoController');
+Route::resource('/empleados', 'EmpleadoController');
+
+Auth::routes();

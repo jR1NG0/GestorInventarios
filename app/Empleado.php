@@ -5,12 +5,12 @@ namespace GestorInventarios;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Usuario extends Model {
+class Empleado extends Model {
 
     
-    protected $table = 'usuarios';
+    protected $table = 'empleados';
 
-    protected $primaryKey = 'usuario_id';
+    protected $primaryKey = 'empleado_id';
 
     public $timestamps = false;
 
@@ -19,7 +19,7 @@ class Usuario extends Model {
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellido','cargo','telefono','area_id',];
+    protected $fillable = ['nombre', 'apellido','cargo','telefono','departamento_id',];
 
 
     /**
