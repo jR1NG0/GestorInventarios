@@ -71,7 +71,7 @@
 
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">               
-                <a class="navbar-brand" href="index.html">Control de equipo de computo</a>
+                <a class="navbar-brand" href="index.html">Control de inventario</a>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -90,14 +90,28 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                        
+                                @if (Auth::guest())
+                                    <li><a href="/validacion/inicio">Iniciar Sesión</a></li>
+                                    <li><a href="/validacion/registro">Registrarse</a></li>
+                                @else
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a> </li>
+                                            <li><a href="/validacion/salida">Salir</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="/validacion/salida"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a>
+                                            </li>
+                       
+                                        </ul>
+                                    </li>
+                                
+                                @endif
+
+                        </ul>
+                    </li>
+                </ul>
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -107,14 +121,14 @@
                             
                         </li>
                         <li>
-                            <a href="departamento"><i class="fa fa-building fa-fw"></i> Departamentos</a>
+                            <a href="departamento"><i class="fa fa-building fa-fw"></i> Areas</a>
                         </li>
                         <li>
                             <a href="equipo"><i class="fa fa-desktop fa-fw"></i> Equipos de computo</a>
                         </li>
 
                         <li>
-                            <a href="impresora"><i class="fa fa-print fa-fw"></i>Impresoras</a>
+                            <a href="impresora"><i class="fa fa-print fa-fw"></i>Productos</a>
                         </li>
 
                         <li>
@@ -122,13 +136,16 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Mantenimiento<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Ajustes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class='fa fa-desktop fa-fw'></i> Equipo de computo</a>
+                                    <a href="#"><i class='fa fa-print fa-fw'></i> Nuevo Producto</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class='fa fa-print fa-fw'></i> Impresoras</a>
+                                    <a href="#"><i class='fa fa-print fa-fw'></i> Actualizar producto</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class='fa fa-print fa-fw'></i> Eliminar producto</a>
                                 </li>
                             </ul>
                         </li>
