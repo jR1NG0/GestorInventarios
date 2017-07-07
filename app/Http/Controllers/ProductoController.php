@@ -4,10 +4,11 @@ namespace GestorInventarios\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GestorInventarios\Http\Requests\ProductoRequest; 
-
+use GestorInventarios\Producto;
 
 use Redirect; 
 use Session;   
+
 
 class ProductoController extends Controller
 {   
@@ -26,13 +27,13 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all(); // se obtiene la totalidad de Libroes existentes en la BD
+        $productos = Producto::all(); // se obtiene la totalidad de producto existentes en la BD
         $datos = array ();
         $contador = 0;
 
         // se obtenendran los valores de cada producto y se almacenaran en un array para ser retornados hacia la vista
         foreach ($productos as $producto) {
-            $departamento = Departamento::find($producto->area_id);
+            $departamento = Departamento::find($producto->departamento_id);
             
         
             $datos[$contador]["id"] = $producto->producto_id;
@@ -60,7 +61,7 @@ class ProductoController extends Controller
        
         
    
-        return view("/crearLibro",compact('departamentos'));
+        return view("/agregarProducto",compact('departamentos'));
     }
 
     /**

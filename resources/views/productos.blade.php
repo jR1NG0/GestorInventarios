@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -20,9 +20,10 @@
                             <div class="col-md-10 col-md-offset-1">
                                 {{-- Se listaran los datos obtenidos como arreglo --}}
                                 <h3>{{ $dato['nombre'] }}</h3>
-                                <h4>Año: {{ $dato['anno'] }}</h4>
-                                <h4>Autor: {{ $dato['autor'] }}</h4>
-                                <h4>Genero: {{ $dato['genero'] }}</h4>
+                                <h4>Descripcion: {{ $dato['descripcion'] }}</h4>
+                                <h4>Cantidad: {{ $dato['cantidad'] }}</h4>
+                                <h4>Stock Minimo: {{ $dato['stock_min'] }}</h4>
+                                <h4>Departamento: {{ $dato['departamento'] }}</h4>
                                 <br>
                                 <div class="col-md-8 col-md-offset-2" style="float: bottom;">
                                     <div class="col-md-6">

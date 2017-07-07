@@ -23,7 +23,7 @@ class Producto extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre', 'descripcion', 'cantidad','stock_min','area_id',
+        'nombre', 'descripcion', 'cantidad','stock_min','departamento_id',
     ];
 
     
